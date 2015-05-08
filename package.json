@@ -1,5 +1,5 @@
 {
-  "name": "smc-app-engine",
+  "name": "freebase-mesh",
   "version": "0.0.0",
   "description": "SMC Application Engine that runs other components and have an API and data mesh service.",
   "main": "index.js",
@@ -17,9 +17,5 @@
   "devDependencies": {
     "chai": "^2.2.0",
     "mocha": "^2.2.4"
-  },
-  "dependencies": {
-    "express": "^4.12.3",
-    "lodash": "^3.6.0"
   }
 }
