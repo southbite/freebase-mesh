@@ -14,13 +14,13 @@ describe('Mesh', function() {
 
       remoteEndpoints: {},
 
-      modules: {},
-
-      components: {
-
-        emitter: {}
-
+      modules: {
+        data: {
+          path: './components/data'
+        }
       },
+
+      components: {},
 
 
 
