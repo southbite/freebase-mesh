@@ -1,0 +1,25 @@
+{
+  "name": "smc-app-engine",
+  "version": "0.0.0",
+  "description": "SMC Application Engine that runs other components and have an API and data mesh service.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FieldServer/smc-app-engine"
+  },
+  "author": "",
+  "license": "Proprietary",
+  "bugs": {
+    "url": "https://github.com/FieldServer/smc-app-engine/issues"
+  },
+  "homepage": "https://github.com/FieldServer/smc-app-engine",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4"
+  },
+  "dependencies": {
+    "express": "^4.12.3",
+    "lodash": "^3.6.0"
+  }
+}
