@@ -16,6 +16,11 @@
   "homepage": "https://github.com/FieldServer/smc-app-engine",
   "devDependencies": {
     "chai": "^2.2.0",
+    "ipso": "0.0.22",
     "mocha": "^2.2.4"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "log4js": "^0.6.24"
   }
 }

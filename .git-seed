@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "repos": [
+    {
+      "root": true,
+      "workDir": ".",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:southbite/freebase-mesh.git",
+      "HEAD": "refs/heads/master",
+      "version": "ROOT_REPO_REF"
+    },
+    {
+      "root": false,
+      "workDir": "./node_modules/freebase",
+      "packageManager": "npm",
+      "remote.origin.url": "git@github.com:southbite/freebase-primus.git",
+      "HEAD": "refs/heads/master",
+      "version": "0576c739beabaf52bd2b683d4d6d68b05a93b15d"
+    }
+  ]
+}
