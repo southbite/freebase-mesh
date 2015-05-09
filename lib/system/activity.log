@@ -1,0 +1,32 @@
+[2015-05-09 12:17:40.182] [ERROR] [default] - Failed to initialize components
+[2015-05-09 12:17:40.184] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize module',
+  data: [ReferenceError: schema is not defined] }
+[2015-05-09 12:21:04.773] [ERROR] [default] - Failed to initialize components
+[2015-05-09 12:21:04.774] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize module',
+  data: [ReferenceError: schema is not defined] }
+[2015-05-09 12:24:54.382] [ERROR] [default] - Failed to initialize components
+[2015-05-09 12:24:54.384] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize module',
+  data: [ReferenceError: forEach is not defined] }
+[2015-05-09 12:26:05.723] [ERROR] [default] - Failed to initialize components
+[2015-05-09 12:26:05.725] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize module',
+  data: [ReferenceError: forEach is not defined] }
+[2015-05-09 12:27:11.202] [ERROR] [default] - Failed to initialize components
+[2015-05-09 12:27:11.203] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize module',
+  data: [TypeError: undefined is not a function] }
+[2015-05-09 13:51:23.510] [ERROR] [default] - Failed to initialize components
+[2015-05-09 13:51:23.512] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize module',
+  data: [TypeError: undefined is not a function] }
+[2015-05-09 13:52:14.408] [ERROR] [default] - Failed to initialize components
+[2015-05-09 13:52:14.410] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize module',
+  data: [TypeError: undefined is not a function] }
+[2015-05-09 18:28:50.450] [ERROR] [default] - Failed to initialize components
+[2015-05-09 18:28:50.452] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize module',
+  data: [TypeError: undefined is not a function] }
