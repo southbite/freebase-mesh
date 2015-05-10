@@ -6,6 +6,8 @@ describe('Mesh', function() {
 
     this.config = {
 
+      name:"testMesh",
+
       dataLayer: {
         authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3',
         systemSecret: 'mesh',
@@ -21,13 +23,13 @@ describe('Mesh', function() {
       			type:"async",
       			name:"client",//if blank or null we just do new require
       			parameters:[
-      				{"name":"config", "required":true,"value":{config:{"host":"127.0.0.1", "port":8000, "secret":"mesh"}}},
-  					{"name":"callback", "type":"callback"},    
+      				{"name":"config", "required":true, "value":{config:{"host":"127.0.0.1", "port":8000, "secret":"mesh"}}},
+  					{"name":"callback", "parameterType":"callback"},    
       			],
       			callback:{
   					parameters:[
-  						{"name":"error", "type":"error"},
-	  					{"name":"client", "type":"instance"}
+  						{"name":"error", "parameterType":"error"},
+	  					{"name":"client", "parameterType":"instance"}
   					]
   				}
       		}
@@ -36,7 +38,7 @@ describe('Mesh', function() {
 
       components: {
       	"freebaseClient":{
-      		module:"freebaseClient",
+      		moduleName:"freebaseClient",
       		config:{
 
       		},
@@ -61,20 +63,32 @@ describe('Mesh', function() {
 	      			"set":{
 	      				"type":"async",
 	      			    "synonymn":"PUT",
-	  				    "parameters":{
+	  				    "parameters":[
 	  				   		{"name":"path", "required":true},
 	  				   		{"name":"options"},
 	  				   		{"name":"callback", "type":"callback", "required":true}
-	  				   	}
+	  				   	],
+	      				"callback":{
+	      					"parameters":[
+		  						{"name":"error", "type":"error"},
+		  						{"name":"response"}
+		  					]
+	      				}
 	      			},
 	      			"remove":{
 	      				"type":"async",
 	      				"synonymn":"DELETE",
-	  				    "parameters":{
+	  				    "parameters":[
 	  				    	{"name":"path", "required":true},
 	  				    	{"name":"options"},
 	  				    	{"name":"callback", "type":"callback", "required":true}
-	  				    }
+	  				    ],
+	      				"callback":{
+	      					"parameters":[
+		  						{"name":"error", "type":"error"},
+		  						{"name":"response"}
+		  					]
+	      				}
 	      			}
 	      		}
       		}
