@@ -47,7 +47,7 @@ describe('Mesh', function() {
       			"methods":{
       				"get":{
 	      				"type":"async",
-	      				"synonymn":"GET",
+	      				"alias":"GET",
 	      				"parameters":[
 	      					{"name":"path", "required":true},
 	      					{"name":"options"},
@@ -62,7 +62,7 @@ describe('Mesh', function() {
 	      			},
 	      			"set":{
 	      				"type":"async",
-	      			    "synonymn":"PUT",
+	      			    "alias":"PUT",
 	  				    "parameters":[
 	  				   		{"name":"path", "required":true},
 	  				   		{"name":"options"},
@@ -77,7 +77,7 @@ describe('Mesh', function() {
 	      			},
 	      			"remove":{
 	      				"type":"async",
-	      				"synonymn":"DELETE",
+	      				"alias":"DELETE",
 	  				    "parameters":[
 	  				    	{"name":"path", "required":true},
 	  				    	{"name":"options"},
