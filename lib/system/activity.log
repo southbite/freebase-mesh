@@ -138,3 +138,7 @@
 [2015-05-10 16:31:20.246] [ERROR] [default] - { name: 'MeshError',
   message: 'Failed to initialize component',
   data: [ReferenceError: Messenger is not defined] }
+[2015-05-11 11:36:44.823] [ERROR] [default] - Failed to initialize components
+[2015-05-11 11:36:44.824] [ERROR] [default] - { name: 'MeshError',
+  message: 'Failed to initialize component',
+  data: [ReferenceError: Messenger is not defined] }
