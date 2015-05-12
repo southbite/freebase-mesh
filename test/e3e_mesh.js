@@ -123,13 +123,20 @@ describe('Mesh', function() {
 
     //console.log(this.mesh);
     //'/mytest/678687', {}, { test: 'test1' }, [Function]
-   
+  /*
+  _this.mesh.api.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
+        console.log('arguments of response');
+        console.log(arguments);
+
+        if (e) return done(e);
+  });
+  */
 
 	_this.mesh.api.post('/freebaseClient/set', '/mytest/678687', {"test":"test1"}, {}, function(e, response){
      	console.log('arguments of response');
      	console.log(arguments);
-
-     	if (e) return done(e);
+      
+     	return done(e);
 	});
 
    
