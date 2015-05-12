@@ -118,23 +118,27 @@ describe('Mesh', function() {
 
   it('starts', ipso(function(done) {
 
-  	this.timeout('10000');
   	var _this = this;
 
     //console.log(this.mesh);
     //'/mytest/678687', {}, { test: 'test1' }, [Function]
-  /*
+
+
   _this.mesh.api.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
-        console.log('arguments of response');
+        console.log('arguments of response to _this.mesh.api.freebaseClient.set');
         console.log(arguments);
 
         if (e) return done(e);
   });
-  */
+  
+
+
 
 	_this.mesh.api.post('/freebaseClient/set', '/mytest/678687', {"test":"test1"}, {}, function(e, response){
-     	console.log('arguments of response');
-     	console.log(arguments);
+     	
+      console.log('arguments of response to _this.mesh.api.post');
+     	console.log({error: e});
+      console.log({response: response});
       
      	return done(e);
 	});
