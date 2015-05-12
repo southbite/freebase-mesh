@@ -13,7 +13,7 @@
       "root": false,
       "workDir": "./node_modules/freebase",
       "packageManager": "npm",
-      "remote.origin.url": "git@github.com:southbite/freebase-primus.git",
+      "remote.origin.url": "https://github.com/southbite/freebase-primus.git",
       "HEAD": "refs/heads/master",
       "version": "46d8dd61e18ba5c87149eeffc7b8a3b0a0444368"
     }
