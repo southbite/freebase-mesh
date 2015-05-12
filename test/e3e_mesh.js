@@ -60,12 +60,13 @@ describe('Mesh', function() {
 	      				}
 	      			},
 	      			"set":{
-	      			    "alias":"PUT",
+	      			  "alias":"PUT",
 	  				    "parameters":[
 	  				   		{"name":"path", "required":true},
 	  				   		{"name":"data", "required":true},
 	  				   		{"name":"options"},
-	  				   		{"name":"callback", "type":"callback", "required":true}
+                  {"name":"callback", "type":"callback", "required":true}
+	  				   		
 	  				   	],
 	      				"callback":{
 	      					"parameters":[
@@ -119,9 +120,6 @@ describe('Mesh', function() {
 
   	this.timeout('10000');
   	var _this = this;
-
-  	var wildcard = require('wildcard');
-  	
 
     //console.log(this.mesh);
     //'/mytest/678687', {}, { test: 'test1' }, [Function]
