@@ -14,7 +14,7 @@ describe('Mesh', function() {
         log_level: 'info|error|warning'
       },
 
-      remoteEndpoints: {},
+      endpoints: {},
 
       modules: {
       	"freebaseClient":{
@@ -46,7 +46,6 @@ describe('Mesh', function() {
       			"exclusive":true,//means we dont dynamically share anything else
       			"methods":{
       				"get":{
-	      				"type":"async",
 	      				"alias":"GET",
 	      				"parameters":[
 	      					{"name":"path", "required":true},
@@ -61,10 +60,10 @@ describe('Mesh', function() {
 	      				}
 	      			},
 	      			"set":{
-	      				"type":"async",
 	      			    "alias":"PUT",
 	  				    "parameters":[
 	  				   		{"name":"path", "required":true},
+	  				   		{"name":"data", "required":true},
 	  				   		{"name":"options"},
 	  				   		{"name":"callback", "type":"callback", "required":true}
 	  				   	],
@@ -76,7 +75,6 @@ describe('Mesh', function() {
 	      				}
 	      			},
 	      			"remove":{
-	      				"type":"async",
 	      				"alias":"DELETE",
 	  				    "parameters":[
 	  				    	{"name":"path", "required":true},
@@ -118,23 +116,26 @@ describe('Mesh', function() {
 
 
   it('starts', ipso(function(done) {
+
+  	this.timeout('10000');
+  	var _this = this;
+
+  	var wildcard = require('wildcard');
+  	
+
     //console.log(this.mesh);
+    //'/mytest/678687', {}, { test: 'test1' }, [Function]
+   
 
-     this.mesh.api.post('/systemData/put', {path:'/mytest/678687', data:{"test":"test1"}}, function(e, response){
-
+	_this.mesh.api.post('/freebaseClient/set', '/mytest/678687', {"test":"test1"}, {}, function(e, response){
+     	console.log('arguments of response');
      	console.log(arguments);
 
      	if (e) return done(e);
+	});
 
-     	this.mesh.api.post('/systemData/get', {path:'/mytest/678687'}, function(e, response){
-
-     		console.log(arguments);
-
-     		if (e) return done(e);
-
-    	});
-    });
-
+   
+     
     
   }));
 

@@ -5,7 +5,7 @@
       "root": true,
       "workDir": ".",
       "packageManager": "npm",
-      "remote.origin.url": "git@github.com:southbite/freebase-mesh.git",
+      "remote.origin.url": "https://github.com/southbite/freebase-mesh.git",
       "HEAD": "refs/heads/master",
       "version": "ROOT_REPO_REF"
     },
@@ -15,7 +15,7 @@
       "packageManager": "npm",
       "remote.origin.url": "git@github.com:southbite/freebase-primus.git",
       "HEAD": "refs/heads/master",
-      "version": "0576c739beabaf52bd2b683d4d6d68b05a93b15d"
+      "version": "46d8dd61e18ba5c87149eeffc7b8a3b0a0444368"
     }
   ]
 }
