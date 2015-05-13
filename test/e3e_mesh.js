@@ -144,23 +144,28 @@ describe('Mesh', function() {
 
           //calling a local component as if it was on another mesh
           _this.mesh.api.testMesh.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
-                console.log('response to _this.mesh.api.testMesh.freebaseClient.set');
-                console.log(response);
+            console.log('response to _this.mesh.api.testMesh.freebaseClient.set');
+            console.log(response);
 
-                response.payload.data.test.should.eql(directClientResponse.payload.data.test);
+            response.payload.data.test.should.eql(directClientResponse.payload.data.test);
 
-                if (e) return done(e);
+              if (e) return done(e);
 
-              //doing the same call using a post to the api
-              _this.mesh.api.post('/freebaseClient/set', '/mytest/678687', {"test":"test1"}, {}, function(e, response){
-                  
-                  console.log('response to  _this.mesh.api.post(\'/freebaseClient/set');
-                  console.log(response);
+            //doing the same call using a post to the api
+            _this.mesh.api.post('/freebaseClient/set', '/mytest/678687', {"test":"test1"}, {}, function(e, response){
+              console.log('response to  _this.mesh.api.post(\'/freebaseClient/set');
+              console.log(response);
 
-                  response.payload.data.test.should.eql(directClientResponse.payload.data.test);
-                  //console.log({response: response});
-                  return done(e);
-              });
+              response.payload.data.test.should.eql(directClientResponse.payload.data.test);
+              //console.log({response: response});
+              //test aliases
+               _this.mesh.api.testMesh.freebaseClient.PUT('/mytest/678687', {"test":"test1"}, {}, function(e, response){
+
+                 response.payload.data.test.should.eql(directClientResponse.payload.data.test);
+                
+                 return done(e);
+               });
+            });
           });
         });
       });     
