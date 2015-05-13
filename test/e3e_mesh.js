@@ -1,6 +1,6 @@
 ipso = require('ipso');
 
-describe('Mesh', function() {
+describe('Mesh e2e test', function() {
 
   before(ipso(function(done, Mesh) {
 
@@ -119,7 +119,6 @@ describe('Mesh', function() {
 
   }));
 
-
   it('starts a local mesh, with a single component that wraps the freebase client module and compares the response with a freebase client instantiated outside of the mesh', ipso(function(done) {
 
     var _this = this;
@@ -133,7 +132,7 @@ describe('Mesh', function() {
         console.log(directClientResponse);
 
         //calling a local component
-        _this.mesh.api.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
+        _this.mesh.api.exchange.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
           console.log('response to _this.mesh.api.freebaseClient.set');
           console.log(response);
 
@@ -143,7 +142,7 @@ describe('Mesh', function() {
             return done(e);
 
           //calling a local component as if it was on another mesh
-          _this.mesh.api.testMesh.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
+         _this.mesh.api.exchange.testMesh.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
             console.log('response to _this.mesh.api.testMesh.freebaseClient.set');
             console.log(response);
 
@@ -159,10 +158,10 @@ describe('Mesh', function() {
               response.payload.data.test.should.eql(directClientResponse.payload.data.test);
               //console.log({response: response});
               //test aliases
-               _this.mesh.api.testMesh.freebaseClient.PUT('/mytest/678687', {"test":"test1"}, {}, function(e, response){
+               _this.mesh.api.exchange.testMesh.freebaseClient.PUT('/mytest/678687', {"test":"test1"}, {}, function(e, response){
 
                  response.payload.data.test.should.eql(directClientResponse.payload.data.test);
-                
+
                  return done(e);
                });
             });
@@ -171,4 +170,23 @@ describe('Mesh', function() {
       });     
     });
   }));
+
+  it('should expose a data layer that is a freebase client, local to the mesh', function (done) {
+
+    var _this = this;
+
+    _this.mesh.api.data.on('/mytest/datalayer/test', {event_type:'set', count:1}, function (e, message) {
+      console.log('arguments...');
+      console.log(arguments);
+      message.data.value.should.eql(10);
+      done();
+    }, function(e){
+      if (e) done(e);
+      _this.mesh.api.exchange.freebaseClient.set('/mytest/datalayer/test', {"value":10}, {}, function(e, response){
+        if (e) done(e);
+      });
+    });
+  });
+
+
 });
