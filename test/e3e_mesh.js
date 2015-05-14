@@ -36,6 +36,9 @@ describe('Mesh e2e test', function() {
       		},
           start:{//where we define a method that starts this module, ie. like for the emitter TODO
 
+          },
+          shutdown:{
+
           }
       	}
       },
@@ -141,7 +144,7 @@ describe('Mesh e2e test', function() {
           if (e) 
             return done(e);
 
-          //calling a local component as if it was on another mesh
+         //calling a local component as if it was on another mesh
          _this.mesh.api.exchange.testMesh.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
             console.log('response to _this.mesh.api.testMesh.freebaseClient.set');
             console.log(response);
@@ -176,8 +179,6 @@ describe('Mesh e2e test', function() {
     var _this = this;
 
     _this.mesh.api.data.on('/mytest/datalayer/test', {event_type:'set', count:1}, function (e, message) {
-      console.log('arguments...');
-      console.log(arguments);
       message.data.value.should.eql(10);
       done();
     }, function(e){
