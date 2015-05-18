@@ -22,6 +22,7 @@
   "dependencies": {
     "async": "^0.9.0",
     "log4js": "^0.6.24",
-    "shortid": "^2.2.2"
+    "shortid": "^2.2.2",
+    "freebase": "git+ssh://git@github.com:southbite/freebase-primus.git"
   }
 }
