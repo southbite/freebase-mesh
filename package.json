@@ -2,7 +2,7 @@
   "name": "freebase-mesh",
   "version": "0.0.0",
   "description": "SMC Application Engine that runs other components and have an API and data mesh service.",
-  "main": "index.js",
+  "main": "lib/system/mesh.js",
   "scripts": {},
   "repository": {
     "type": "git",
