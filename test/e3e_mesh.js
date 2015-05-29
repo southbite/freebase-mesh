@@ -18,13 +18,16 @@ describe('Mesh e2e test', function() {
 
       modules: {
       	"freebaseClient":{
-          scope:"api", //can be local, api, mesh TODO
+          scope:{
+            variableName:"scope",
+            depth:"api" //can be local, api, mesh TODO
+          },
       		path:"freebase",
       		constructor:{
       			type:"async",
       			name:"client",//if blank or null we just do new require
       			parameters:[
-      				{"name":"config", "required":true, "value":{config:{"host":"127.0.0.1", "port":8000, "secret":"mesh"}}},
+      			 {"name":"config", "required":true, "value":{config:{"host":"127.0.0.1", "port":8000, "secret":"mesh"}}},
   					 {"name":"callback", "parameterType":"callback"},    
       			],
       			callback:{
@@ -111,10 +114,16 @@ describe('Mesh e2e test', function() {
 	*/
 
 
-    this.mesh = Mesh();
-    this.mesh.initialize( this.config, function(err) {
+    console.log('instantiate');
 
-      if (err) console.log(err.stack);
+    this.mesh = Mesh();
+     console.log('initialize');
+    this.mesh.initialize(this.config, function(err) {
+
+      if (err) {
+        console.log('failure in init')
+        console.log(err.stack)
+      };
 
       done();
 
@@ -127,8 +136,11 @@ describe('Mesh e2e test', function() {
     var _this = this;
 
     //we require a 'real' freebase client
-    new require('freebase')["client"]({config:{"host":"127.0.0.1", "port":8000, "secret":"mesh"}}, function(e, client){
+    new require('freebase')["client"]({config:{"host":"localhost", "port":8000, "secret":"mesh"}}, function(e, client){
       
+      if (e)
+          console.log('real client init failure');
+
       client.set('/mytest/678687', {"test":"test1"}, {}, function(e, directClientResponse){
 
         console.log('real client set response');

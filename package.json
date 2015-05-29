@@ -23,6 +23,7 @@
     "async": "^0.9.0",
     "log4js": "^0.6.24",
     "shortid": "^2.2.2",
-    "freebase": "git+https://github.com/southbite/freebase-primus.git"
+    "freebase": "git+https://github.com/southbite/freebase-primus.git",
+    "freebase-ui-module": "git+https://github.com/southbite/freebase-ui-module.git"
   }
 }
