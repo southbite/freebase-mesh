@@ -5,17 +5,13 @@ describe('Mesh e2e test', function() {
   before(ipso(function(done, Mesh) {
 
     this.config = {
-
       name:"testMesh",
-
       dataLayer: {
         authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3',
         systemSecret: 'mesh',
         log_level: 'info|error|warning'
       },
-
       endpoints: {},
-
       modules: {
       	"freebaseClient":{
           scope:{
@@ -45,7 +41,6 @@ describe('Mesh e2e test', function() {
           }
       	}
       },
-
       components: {
       	"freebaseClient":{
       		moduleName:"freebaseClient",
@@ -103,7 +98,6 @@ describe('Mesh e2e test', function() {
       		}
       	}
       },
-
     };
 
     /*
