@@ -26,7 +26,7 @@ function Component1(options) {
       console.log("Message from " + message.message);
       message.pingCount++;
       message.message = "Component1";
-     
+     //_this.scope.api.events.component2.exposedMethod(function(e, response)
       if (message.pingCount < options.maximumPings)
       _this.scope.api.exchange.component2.exposedMethod(message, function(e, response){
         
