@@ -112,7 +112,7 @@ describe('Mesh e2e test', function() {
 
     this.mesh = Mesh();
      console.log('initialize');
-    this.mesh.initialize(this.config, function(err) {
+    this.mesh.start(this.config, function(err) {
 
       if (err) {
         console.log('failure in init')

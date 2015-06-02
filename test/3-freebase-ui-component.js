@@ -1,4 +1,4 @@
-var Mesh = require('freebase-mesh');
+var Mesh = require('../lib/system/mesh');
 
 var config = {
       name:"testMesh",
@@ -31,7 +31,7 @@ var config = {
 };
 
 var mesh = Mesh();
-mesh.initialize(config, function(err) {
+mesh.start(config, function(err) {
 
   if (err) console.log(err.stack);
 
