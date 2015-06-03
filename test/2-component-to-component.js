@@ -1,69 +1,109 @@
-var Mesh = require('../lib/system/mesh');
+describe('Consumes an external module', function(done) {
+///events/testComponent2Component/component1/maximum-pings-reached
+///events/testComponent2Component/component1/maximum-pings-reached
+  var Mesh = require('../lib/system/mesh');
 
-var config = {
-    name:"testComponent2Component",
-    dataLayer: {
-      authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3',
-      systemSecret: 'mesh',
-      log_level: 'info|error|warning'
-    },
-    endpoints: {},
-    modules: {
-      "module1":{
-        scope:{
-          variableName:"scope",
-          depth:"mesh"
-        },
-        path:__dirname + "/2-module1",
-        constructor:{
-          type:"sync",
-          parameters:[
-            {value:{maximumPings:1000}}
-          ]
-        }
+  var maximumPings = 1000;
+
+  var config = {
+      name:"testComponent2Component",
+      dataLayer: {
+        authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3',
+        systemSecret: 'mesh',
+        log_level: 'info|error|warning'
       },
-      "module2":{
-        scope:{
-          variableName:"scope",
-          depth:"api"
+      endpoints: {},
+      modules: {
+        "module1":{
+          path:__dirname + "/2-module1",
+          constructor:{
+            type:"sync",
+            parameters:[
+              {value:{maximumPings:maximumPings}}
+            ]
+          }
         },
-        path:__dirname + "/2-module2",
-        constructor:{
-          type:"sync"
-        }
-      }
-    },
-    components: {
-      "component1":{
-        moduleName:"module1",
-        startMethod:"start",
-        schema:{
-          "exclusive":false,//means we dont dynamically share anything else
-          "methods":{
-            "start":{
-              type:"sync",
-              parameters:[
-               {"required":true, "value":{"message":"this is a start parameter"}}  
-              ]
-            }
+        "module2":{
+          path:__dirname + "/2-module2",
+          constructor:{
+            type:"sync"
           }
         }
       },
-      "component2":{
-        moduleName:"module2",
-        schema:{
-          "exclusive":false
+      components: {
+        "component1":{
+          moduleName:"module1",
+          scope:"component",
+          startMethod:"start",
+          schema:{
+            "exclusive":false,//means we dont dynamically share anything else
+            "methods":{
+              "start":{
+                type:"sync",
+                parameters:[
+                 {"required":true, "value":{"message":"this is a start parameter"}}  
+                ]
+              }
+            }
+          }
+        },
+        "component2":{
+          moduleName:"module2",
+          scope:"component",
+          schema:{
+            "exclusive":false
+          }
         }
+    }
+  };
+
+  var mesh = Mesh();
+
+  it('starts the mesh, listens for the ping pong completed event, that module1 emits', function(done) {
+
+    this.timeout(10000);
+
+    mesh.initialize(config, function(err) {
+
+      if (err) {
+        console.log(err.stack);
+        done(err);
+      }else{
+
+        mesh.api.event.component1.on('maximum-pings-reached', function(message){
+
+          console.log(message.data);
+          //console.log(mesh.api.event.component1.off.toString());
+          mesh.api.event.component1.off('maximum-pings-reached', function(err){
+            if (err)
+             console.log('Couldnt detach from event maximum-pings-reached');
+
+            done(err);
+          });
+
+        }, function(err){
+          if (err){
+             console.log('Couldnt attach to event maximum-pings-reached');
+             done(err);
+          }else{
+            //we have attached our events, now we start the mesh
+            console.log('attached on ok');
+            //console.log(mesh.api.data.events);
+            mesh.start(function(err) {
+               if (err) {
+                console.log('Failed to start mesh');
+                done(err);
+              }
+            });
+          }
+        });
       }
-  }
-};
-
-var mesh = Mesh();
-mesh.start(config, function(err) {
-
-  if (err) console.log(err.stack);
-
+    });
+  });
 });
+
+
+
 
 
 

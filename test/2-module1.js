@@ -11,49 +11,62 @@ module.exports = function (options) {
 
 function Component1(options) {
 
-  var _this = this;
-
   if (!options)
     options = {};
 
    if (!options.maximumPings)
     options.maximumPings = 100;
 
-  _this.exposedMethod = function(message, callback){
+  this.moduleMethod = function(){
+    console.log('ran the module method from the component level scope');
+  }
+
+  this.exposedMethod = function(message, callback){
 
     try{
 
+      this.module.moduleMethod();
+
       console.log("Message from " + message.message);
+      //console.log(message);
+      //console.log(options);
       message.pingCount++;
       message.message = "Component1";
+
+
      //_this.scope.api.events.component2.exposedMethod(function(e, response)
       if (message.pingCount < options.maximumPings)
-      _this.scope.api.exchange.component2.exposedMethod(message, function(e, response){
-        
+      this.mesh.exchange.component2.exposedMethod(message, function(e, response){
+        callback(e);
       });
       else{
-         var timeDiff = moment.utc() - message.timestamp;
-        console.log('Hooray, component ping pong test is over!! ' + message.pingCount + ' pings, elapsed time:' + timeDiff + 'ms');
+        var timeDiff = moment.utc() - message.timestamp;
+        var message = 'Hooray, component ping pong test is over!! ' + message.pingCount + ' pings, elapsed time:' + timeDiff + 'ms';
+        this.emit('maximum-pings-reached', message, function(e, response){
+
+          //console.log('emit results');
+          //console.log(arguments);
+
+        });
       }
         
-
     }catch(e){
       callback(e);
     }
   }
 
-  _this.start = function(){
+  this.start = function(){
 
-    if (!_this.scope || !_this.scope.api)
-      throw new Error('This component needs mesh level scope');
+    if (!this.mesh)
+      throw new Error('This module needs component level scope');
 
-    _this.scope.api.exchange.component2.exposedMethod({message:"Component1", "timestamp":moment.utc(), "pingCount":0}, function(e, response){
+    this.mesh.exchange.component2.exposedMethod({message:"Component1", "timestamp":moment.utc(), "pingCount":0}, function(e, response){
         if (e) return console.log('call to component2 broke...' + e);
 
     });
   }
 
-  _this.stop = function(){
+  this.stop = function(){
 
   }
 }

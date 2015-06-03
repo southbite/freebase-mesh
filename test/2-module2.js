@@ -11,26 +11,24 @@ module.exports = function (options) {
 
 function Component2(options) {
 
-  var _this = this;
-
   if (!options)
     options = {};
 
    if (!options.maximumPings)
     options.maximumPings = 100;
 
-  _this.exposedMethod = function(message, callback){
+  this.exposedMethod = function(message, callback){
 
     try{
 
-       if (!_this.scope || !_this.scope.data)
-        throw new Error('This component needs api level scope');
+       if (!this.mesh)
+        throw new Error('This module needs component level scope');
 
       console.log("Message from " + message.message);
 
       message.message = "Component2";
      
-      _this.scope.exchange.component1.exposedMethod(message, function(e, response){
+      this.mesh.exchange.component1.exposedMethod(message, function(e, response){
         
       });
 
@@ -39,7 +37,7 @@ function Component2(options) {
     }
   }
 
-  _this.stop = function(){
+  this.stop = function(){
     
   }
 }

@@ -10,7 +10,6 @@ var config = {
       endpoints: {},
       modules: {
       	"freebaseUI":{
-          scope:"api", //can be local, api, mesh TODO
       	  path:"freebase-ui-module",
       	  constructor:{
             type:"sync",
@@ -21,6 +20,7 @@ var config = {
       components: {
       	"freebaseUI":{
       		moduleName:"freebaseUI",
+          scope:"module",
       		config:{},
       		schema:{
       			"exclusive":false,//means we dont dynamically share anything else
@@ -31,7 +31,7 @@ var config = {
 };
 
 var mesh = Mesh();
-mesh.start(config, function(err) {
+mesh.initialize(config, function(err) {
 
   if (err) console.log(err.stack);
 

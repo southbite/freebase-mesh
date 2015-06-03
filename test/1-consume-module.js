@@ -15,10 +15,6 @@ describe('Consumes an external module', function(done) {
       endpoints: {},
       modules: {
       	"freebaseClient":{
-          scope:{
-            variableName:"scope",
-            depth:"api" //can be local, api, mesh TODO
-          },
       		path:"freebase",
       		constructor:{
       			type:"async",
@@ -45,6 +41,7 @@ describe('Consumes an external module', function(done) {
       components: {
       	"freebaseClient":{
       		moduleName:"freebaseClient",
+          scope:"module", //"either component or module, module by default"
       		config:{
 
       		},
@@ -106,7 +103,7 @@ describe('Consumes an external module', function(done) {
 
     mesh = Mesh();
    
-    mesh.start(config, function(err) {
+    mesh.initialize(config, function(err) {
 
       if (err) {
         console.log('failure in init')
@@ -134,6 +131,8 @@ describe('Consumes an external module', function(done) {
         console.log('real client set response');
         console.log(directClientResponse);
 
+        console.log(mesh.api.exchange);
+
         //calling a local component
         mesh.api.exchange.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
           console.log('response to _this.mesh.api.freebaseClient.set');
@@ -143,6 +142,8 @@ describe('Consumes an external module', function(done) {
 
           if (e) 
             return done(e);
+
+
 
          //calling a local component as if it was on another mesh
          mesh.api.exchange.testMesh.freebaseClient.set('/mytest/678687', {"test":"test1"}, {}, function(e, response){
