@@ -1,11 +1,12 @@
-var Mesh = require('../lib/system/mesh');
+var Mesh = require('../../lib/system/mesh');
 
 var config = {
       name:"testMesh",
       dataLayer: {
         authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3',
         systemSecret: 'mesh',
-        log_level: 'info|error|warning'
+        log_level: 'info|error|warning',
+        port:"3001"
       },
       endpoints: {},
       modules: {
@@ -20,7 +21,7 @@ var config = {
       components: {
       	"freebaseUI":{
       		moduleName:"freebaseUI",
-          scope:"module",//not mesh aware
+          scope:"module",
       		config:{},
       		schema:{
       			"exclusive":false,//means we dont dynamically share anything else
@@ -38,7 +39,7 @@ mesh.initialize(config, function(err) {
   console.log('doing start');
 
   //when using an unexclusive schema, we can dynamically call any functions the component instance shares.
-  mesh.api.exchange.freebaseUI.start({"freebase-system-secret":"mesh"}, function(err){
+  mesh.api.exchange.freebaseUI.start({"freebase-system-secret":"mesh","freebase-port":3001}, function(err){
 
   	if (err) console.log(err.stack);
 

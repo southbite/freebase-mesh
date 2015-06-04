@@ -33,7 +33,7 @@ describe('Consumes an external module', function(done) {
       components: {
         "component1":{
           moduleName:"module1",
-          scope:"component",
+          scope:"component",//either component(mesh aware) or module - default is module
           startMethod:"start",
           schema:{
             "exclusive":false,//means we dont dynamically share anything else
