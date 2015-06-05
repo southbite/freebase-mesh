@@ -48,7 +48,7 @@ objective 'find where http server start is called', ->
                 #     'wait() & see.*'
                 #
 
-                # wait(server, mesh)
+                wait(server, mesh)
 
                 #
                 # It suspends the test walker from proceeding to the next step even
@@ -57,6 +57,7 @@ objective 'find where http server start is called', ->
                 # in the repl (prompt)
                 # see.server <enter>
                 # see.mesh.api.exchange <enter>
+                # see.mesh.describe() <enter>
                 # see. <tab, tab>
                 # see.done to finish, or resave test without wait()
 
