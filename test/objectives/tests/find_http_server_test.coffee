@@ -28,7 +28,7 @@ objective 'find where http server start is called', ->
 
         (mesh = Mesh()).initialize
 
-            name: 'name'
+            name: 'nameOFmesh'
             dataLayer:
                 port: 3000
                 authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3'
@@ -48,14 +48,15 @@ objective 'find where http server start is called', ->
                 #     'wait() & see.*'
                 #
 
-                # wait 20000, server, mesh
+                wait 20000, server, mesh
 
                 #
                 # It suspends the test walker from proceeding to the next step even
                 # if done was called.
                 # 
                 # in the repl (prompt)
-                # see.server
+                # see.server <enter>
+                # see.mesh.api.exchange <enter>
                 # see. <tab, tab>
                 # see.done to finish, or resave test without wait()
 
