@@ -1,6 +1,7 @@
 objective
     
-    title: 'Untitled'
+    title: 'Freebase Mesh Objectives'
+    # codename: 'orchestral'
     uuid: '72e2db83-bfaf-4c07-b348-4253d17be9a2'
     description: ''
     repl: listen: '/tmp/socket-72e2db83-bfaf-4c07-b348-4253d17be9a2'

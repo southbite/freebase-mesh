@@ -48,7 +48,7 @@ objective 'find where http server start is called', ->
                 #     'wait() & see.*'
                 #
 
-                wait 20000, server, mesh
+                # wait(server, mesh)
 
                 #
                 # It suspends the test walker from proceeding to the next step even
