@@ -4,6 +4,7 @@ freebase-mesh:
 
 For example, this is how one would consume the freebase-ui-component module in a mesh, and start it:
 
+```js
 	var Mesh = require('freebase-mesh');
 
 	var config = {
@@ -53,9 +54,10 @@ For example, this is how one would consume the freebase-ui-component module in a
 	  });
 
 	});
+```
 
 And this is how we share a freebase client, and apply aliases to its methods:
-
+```js
 	var config = {
 	  name:"testMesh",
 	  dataLayer: {
@@ -152,7 +154,6 @@ And this is how we share a freebase client, and apply aliases to its methods:
 	  },
 	};
 
-
     var mesh = Mesh();
     
     mesh.initialize(config, function(err) {
@@ -171,20 +172,13 @@ And this is how we share a freebase client, and apply aliases to its methods:
 	    });
 
     });
-
+```
 
 Installation:
 ==========
 ```bash
-	npm install ipso-cli -g
 	git clone "https://github.com/southbite/freebase-mesh.git" && cd freebase-mesh
 	npm install
-```
-End to end test
----------------
-*A freebase component gets consumed by the mesh by configuration, and various methods are shared in the mesh, aliases for method names are also demonstrated.*
-```bash
-	mocha test/e3e_mesh
 ```
 UI component test
 ---------------
