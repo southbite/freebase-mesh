@@ -51,6 +51,9 @@ objective 'find where http server start is called', ->
                 # wait 20000, server, mesh
 
                 #
+                # It suspends the test walker from proceeding to the next step even
+                # if done was called.
+                # 
                 # in the repl (prompt)
                 # see.server
                 # see. <tab, tab>
