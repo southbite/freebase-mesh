@@ -63,6 +63,8 @@ describe('Consumes an external module', function(done) {
 
     this.timeout(10000);
 
+    var onEventRef;
+
     mesh.initialize(config, function(err) {
 
       if (err) {
@@ -74,7 +76,7 @@ describe('Consumes an external module', function(done) {
 
           //console.log(message.data);
           //console.log(mesh.api.event.component1.off.toString());
-          mesh.api.event.component1.off('maximum-pings-reached', function(err){
+          mesh.api.event.component1.off(onEventRef, function(err){
             if (err)
              console.log('Couldnt detach from event maximum-pings-reached');
 
@@ -83,13 +85,14 @@ describe('Consumes an external module', function(done) {
             done(err);
           });
 
-        }, function(err){
+        }, function(err, ref){
           if (err){
              console.log('Couldnt attach to event maximum-pings-reached');
              done(err);
           }else{
             //we have attached our events, now we start the mesh
-            console.log('attached on ok');
+            console.log('attached on ok, ref: ' + ref);
+            onEventRef = ref;
             //console.log(mesh.api.data.events);
             mesh.start(function(err) {
                if (err) {
