@@ -72,12 +72,14 @@ describe('Consumes an external module', function(done) {
 
         mesh.api.event.component1.on('maximum-pings-reached', function(message){
 
-          console.log(message.data);
+          //console.log(message.data);
           //console.log(mesh.api.event.component1.off.toString());
           mesh.api.event.component1.off('maximum-pings-reached', function(err){
             if (err)
              console.log('Couldnt detach from event maximum-pings-reached');
 
+            console.log('Detaching from maximum-pings-reached');
+            //console.log(done);
             done(err);
           });
 
