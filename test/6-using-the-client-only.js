@@ -3,6 +3,7 @@ describe('Using the clientside only', function() {
   var spawn = require('child_process').spawn;
   var sep = require('path').sep;
   var remote;
+  var assert = require('assert');
 
   // Spawn mesh in another process.
   before(function(done) {
@@ -20,17 +21,40 @@ describe('Using the clientside only', function() {
   context('with clientside bits', function() {
 
 
-    it('', function(done) {
+    it('can ride the slippery slip', function(done) {
       
       var freebase = require('freebase');
-      var api = require('../../lib/ststem/api');
+      var api = require('../lib/system/api');
+      var config = {
+        endpoints: {
+          theFarawayTree: {  // remote mesh node
+            config: {
+              port: 3001,
+              secret: 'mesh',
+              host: 'localhost' // TODO This was necessary, did not default
+            }
+          }
+        }
+      }
 
-      api.initialize(config, freebase, function(err, api) {
+      api.initialize(config, freebase, function(err, client) {
 
+        if (err) return done(err);
+
+        client.api.exchange
+
+        .theFarawayTree.moonface.rideTheSlipperySlip(
+
+          'one!', 'two!', 'three!', function(err, res) {
+
+            if (err) return done(err); 
+
+            assert(res == 'one! two! three!, wheeeeeeeeeeeeheeee!');
+            done();
+
+          }
+        )
       })
-
-
-
     });
   })
 });

@@ -1,7 +1,27 @@
 var Mesh = require('../lib/system/mesh');
 var should = require('chai').should();
 
-describe('Consumes an external module', function(done) {
+describe('Consumes an external module', function() {
+
+  before(function(){
+    this.origCreateServer = require('http').createServer;
+  });
+
+  after(function(){
+    // stop the server after the test
+    if (this.server) this.server.close();
+    require('http').createServer = this.origCreateServer;
+  });
+
+  beforeEach(function(){
+    _this = this
+    require('http').createServer = function() {
+      // intercept server creation to get ref to it
+      _this.server = _this.origCreateServer.apply(null, arguments);
+      return _this.server;
+    }
+  });
+
 
   var mesh;
 
@@ -116,8 +136,10 @@ describe('Consumes an external module', function(done) {
     //we require a 'real' freebase client
     new require('freebase')["client"]({config:{"host":"localhost", "port":8000, "secret":"mesh"}}, function(e, client){
       
-      if (e)
-          console.log('real client init failure');
+      if (e) {
+        console.log('real client init failure');
+        done(e);
+      }
 
       client.set('/mytest/678687', {"test":"test1"}, {}, function(e, directClientResponse){
 
@@ -163,8 +185,8 @@ describe('Consumes an external module', function(done) {
       message.payload.data.value.should.eql(10);
       done();
     }, function(e){
-      if (e) done(e);
-        mesh.api.exchange.freebaseClient.set('/mytest/datalayer/test', {"value":10}, {}, function(e, response){
+      if (e) return done(e);
+      mesh.api.exchange.freebaseClient.set('/mytest/datalayer/test', {"value":10}, {}, function(e, response){
         if (e) done(e);
       });
     });
