@@ -57,7 +57,7 @@ describe('Demonstrates the middleware functionality', function(done) {
 
   it('starts the mesh, loads the middleware module - which loads the browser plugin', function(done) {
 
-    this.timeout(10000);
+    this.timeout(15000);
 
     var onEventRef;
 
@@ -70,8 +70,9 @@ describe('Demonstrates the middleware functionality', function(done) {
 
         mesh.api.event.middleware.on('plugins-loaded', function(message){
           //'/mesh/plugins/' + pluginConfig.key + '/static'
-
-          require('request')({uri:'http://127.0.0.1:' + testport + '/mesh/plugins/api/app/api.js',
+          var url = 'http://127.0.0.1:' + testport + '/mesh/plugins/api';
+          console.log('connecting to ' + url);
+          require('request')({uri:url,
            method:'GET'
           }, 
           function(e, r, b){
@@ -106,6 +107,3 @@ describe('Demonstrates the middleware functionality', function(done) {
     });
   });
 });
-
-
-
