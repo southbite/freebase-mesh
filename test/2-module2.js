@@ -24,7 +24,7 @@ function Component2(options) {
        if (!this.mesh)
         throw new Error('This module needs component level scope');
 
-      console.log("Message from " + message.message);
+      //console.log("Message from " + message.message);
 
       message.message = "Component2";
      
