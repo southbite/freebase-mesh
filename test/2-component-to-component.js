@@ -6,54 +6,54 @@ describe('Bounces a message between two components, demonstrates how the events 
   var maximumPings = 1000;
 
   var config = {
-      name:"testComponent2Component",
-      dataLayer: {
-        authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3',
-        systemSecret: 'mesh',
-        log_level: 'info|error|warning'
-      },
-      endpoints: {},
-      modules: {
-        "module1":{
-          path:__dirname + "/2-module1",
-          constructor:{
-            type:"sync",
-            parameters:[
-              {value:{maximumPings:maximumPings}}
-            ]
-          }
-        },
-        "module2":{
-          path:__dirname + "/2-module2",
-          constructor:{
-            type:"sync"
-          }
+    name:"testComponent2Component",
+    dataLayer: {
+      authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3',
+      systemSecret: 'mesh',
+      log_level: 'info|error|warning'
+    },
+    endpoints: {},
+    modules: {
+      "module1":{
+        path:__dirname + "/2-module1",
+        constructor:{
+          type:"sync",
+          parameters:[
+            {value:{maximumPings:maximumPings}}
+          ]
         }
       },
-      components: {
-        "component1":{
-          moduleName:"module1",
-          scope:"component",//either component(mesh aware) or module - default is module
-          startMethod:"start",
-          schema:{
-            "exclusive":false,//means we dont dynamically share anything else
-            "methods":{
-              "start":{
-                type:"sync",
-                parameters:[
-                 {"required":true, "value":{"message":"this is a start parameter"}}  
-                ]
-              }
+      "module2":{
+        path:__dirname + "/2-module2",
+        constructor:{
+          type:"sync"
+        }
+      }
+    },
+    components: {
+      "component1":{
+        moduleName:"module1",
+        scope:"component",//either component(mesh aware) or module - default is module
+        startMethod:"start",
+        schema:{
+          "exclusive":false,//means we dont dynamically share anything else
+          "methods":{
+            "start":{
+              type:"sync",
+              parameters:[
+               {"required":true, "value":{"message":"this is a start parameter"}}  
+              ]
             }
           }
-        },
-        "component2":{
-          moduleName:"module2",
-          scope:"component",
-          schema:{
-            "exclusive":false
-          }
         }
+      },
+      "component2":{
+        moduleName:"module2",
+        scope:"component",
+        schema:{
+          "exclusive":false
+        }
+      }
     }
   };
 
