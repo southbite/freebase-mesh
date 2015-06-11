@@ -71,7 +71,7 @@ describe('Demonstrates the middleware functionality', function(done) {
         mesh.api.event.middleware.on('plugins-loaded', function(message){
           //'/mesh/plugins/' + pluginConfig.key + '/static'
 
-          require('request')({uri:'http://127.0.0.1:' + testport + '/mesh/plugins/browser/app/api.js',
+          require('request')({uri:'http://127.0.0.1:' + testport + '/mesh/plugins/api/app/api.js',
            method:'GET'
           }, 
           function(e, r, b){
