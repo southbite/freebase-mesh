@@ -78,9 +78,9 @@ describe('Consumes an external module', function(done) {
               ],
               "callback":{
                 "parameters":[
-                {"name":"error", "type":"error"},
-                {"name":"response"}
-              ]
+                  {"name":"error", "type":"error"},
+                  {"name":"response"}
+                ]
               }
             }
           }

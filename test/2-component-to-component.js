@@ -1,4 +1,4 @@
-describe('Consumes an external module', function(done) {
+describe('Bounces a message between two components, demonstrates how the events layer works', function(done) {
 ///events/testComponent2Component/component1/maximum-pings-reached
 ///events/testComponent2Component/component1/maximum-pings-reached
   var Mesh = require('../lib/system/mesh');
