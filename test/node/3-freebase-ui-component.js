@@ -48,5 +48,3 @@ mesh.initialize(config, function(err) {
 
 });
 
-
-

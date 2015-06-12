@@ -1,0 +1,18 @@
+<head>
+
+    <script src='/ExampleMesh/api/client'></script>
+
+</head>
+
+<body>
+    <script>
+
+        MeshAPI({}, function(err, client) {
+
+            if (err) return console.log('ERRROR:', err);
+            console.log('CLIENT:', client);
+
+        });
+
+    </script>
+</body>

@@ -23,7 +23,7 @@ describe('Demonstrates the middleware functionality', function(done) {
         constructor:{
           type:"sync",
           parameters:[
-            {value:{plugins:{}, "testoption":"123"}}//your plugin configs for the middlewares are added here
+            // {value:{plugins:{}, "testoption":"123"}}//your plugin configs for the middlewares are added here
           ]
         }
       },
@@ -32,7 +32,7 @@ describe('Demonstrates the middleware functionality', function(done) {
         constructor:{
           type:"sync",
           parameters:[
-            {value:{plugins:{}, "testoption":"123"}}//your plugin configs for the middlewares are added here
+            // {value:{plugins:{}, "testoption":"123"}}//your plugin configs for the middlewares are added here
           ]
         }
       }
