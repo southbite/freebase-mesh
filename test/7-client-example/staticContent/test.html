@@ -6,11 +6,29 @@
 
 <body>
     <script>
+        console.log('CLIENT STARTING');
 
-        MeshAPI({}, function(err, client) {
+        var config = {
+            endpoints: {
+                ExampleMesh: {
+                    config: {
+                        host: 'localhost',
+                        port: 3001,
+                        secret: 'mesh'
+                    }
+                }
+            }
+        };
 
-            if (err) return console.log('ERRROR:', err);
-            console.log('CLIENT:', client);
+        MeshAPI(config, function(e, client) {
+
+            if (e) return console.log('MESH ERRROR:', e);
+
+            console.log('CLIENT READY:', client);
+
+            var result = 'TODO - call function on mesh';
+
+            console.log('CLIENT DONE:', result);
 
         });
 

@@ -1,9 +1,11 @@
 describe('Client example', function() {
 
+  var Browser = require('zombie');
   var spawn = require('child_process').spawn;
   var sep = require('path').sep;
   var remote;
   var assert = require('assert');
+  var origConsoleLog = console.log;
 
   // Spawn mesh in another process.
   before(function(done) {
@@ -15,16 +17,26 @@ describe('Client example', function() {
     });
   });
   after(function(done) {
+    console.log = origConsoleLog;
     remote.kill();
     done();
   })
 
 
-  it('', function(done) {
+  it('accesses the clientside api', function(done) {
 
+    this.timeout(4000);
+    var browser = new Browser();
+    console.log = function(msg) {
+      if (msg.match(/CLIENT DONE/)) return done()
+      origConsoleLog.apply(this, arguments);
+    }
 
-    done();
-
+    browser.visit(
+      'http://localhost:3001/ExampleMesh/ExampleComponent/staticContent/test.html', 
+      function(e) {
+        if (e) return done(e);
+      }
+    );
   });
-
 })
