@@ -25,11 +25,11 @@ function Component1(options) {
 
     try{
 
-      this.module.moduleMethod();
+      this.module.instance.moduleMethod();
 
       //console.log("Message from " + message.message);
-      //console.log(message);
-      //console.log(options);
+      ////console.log(message);
+      ////console.log(options);
       message.pingCount++;
       message.message = "Component1";
 
@@ -44,8 +44,8 @@ function Component1(options) {
         var message = 'Hooray, component ping pong test is over!! ' + message.pingCount + ' pings, elapsed time:' + timeDiff + 'ms';
         this.emit('maximum-pings-reached', message, function(e, response){
 
-          //console.log('emit results');
-          //console.log(arguments);
+          ////console.log('emit results');
+          ////console.log(arguments);
 
         });
       }
@@ -57,11 +57,13 @@ function Component1(options) {
 
   this.start = function(){
 
+    //console.log('starting module1 component');
+
     if (!this.mesh)
       throw new Error('This module needs component level scope');
 
     this.mesh.exchange.component2.exposedMethod({message:"Component1", "timestamp":moment.utc(), "pingCount":0}, function(e, response){
-        if (e) return console.log('call to component2 broke...' + e);
+        if (e) return //console.log('call to component2 broke...' + e);
 
     });
   }
