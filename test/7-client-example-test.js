@@ -25,7 +25,7 @@ describe('Client example', function() {
 
   it('accesses the clientside api', function(done) {
 
-    this.timeout(4000);
+    this.timeout(10000);
     var browser = new Browser();
     console.log = function(msg) {
       if (msg.match(/CLIENT DONE/)) return done()
