@@ -9,6 +9,7 @@ describe('Using the clientside only', function() {
   before(function(done) {
     remote = spawn('node',[__dirname + sep + '4-first-mesh']);
     remote.stdout.on('data', function(data) {
+      // console.log(data.toString());
       if (!data.toString().match(/READY/)) return;
       done();
     });
@@ -24,7 +25,6 @@ describe('Using the clientside only', function() {
     it('can ride the slippery slip', function(done) {
       
       var freebase = require('freebase');
-      var api = require('../lib/system/api');
       var config = {
         endpoints: {
           theFarawayTree: {  // remote mesh node
@@ -37,24 +37,26 @@ describe('Using the clientside only', function() {
         }
       }
 
-      api.initialize(config, freebase, function(err, client) {
+      var MeshAPI = require('../lib/system/api');
+
+      MeshAPI(config, function(err, client) {
 
         if (err) return done(err);
 
         client.api.exchange
 
         .theFarawayTree.moonface.rideTheSlipperySlip(
-
+          
           'one!', 'two!', 'three!', function(err, res) {
-
-            if (err) return done(err); 
-
+          
+            if (err) return done(err);
             assert(res == 'one! two! three!, wheeeeeeeeeeeeheeee!');
             done();
 
           }
-        )
-      })
+        );
+      });
+
     });
   })
 });
