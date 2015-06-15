@@ -16,56 +16,6 @@ describe('Demonstrates the middleware functionality', function(done) {
       systemSecret: 'mesh',
       log_level: 'info|error|warning',
       port:testport
-    },
-    modules: {
-      "api":{
-        path:"system:api",
-        constructor:{
-          type:"sync",
-          parameters:[
-            // {value:{plugins:{}, "testoption":"123"}}//your plugin configs for the middlewares are added here
-          ]
-        }
-      },
-      "dashboard":{
-        path:"system:dashboard",
-        constructor:{
-          type:"sync",
-          parameters:[
-            // {value:{plugins:{}, "testoption":"123"}}//your plugin configs for the middlewares are added here
-          ]
-        }
-      }
-    },
-    components: {
-      "api":{
-        moduleName:"api",
-        scope:"component",//either component(mesh aware) or module - default is module
-        startMethod:"start",
-        schema:{
-          "exclusive":false
-        },
-        web:{
-          routes:{
-            "client":"handleRequest",
-            "app":"static"
-          }
-        }
-      },
-      "dashboard":{
-        moduleName:"dashboard",
-        scope:"component",//either component(mesh aware) or module - default is module
-        startMethod:"start",
-        schema:{
-          "exclusive":false
-        },
-        web:{
-          routes:{
-            "page":"handleRequest",
-            "app":"static"
-          }
-        }
-      }
     }
   };
 
