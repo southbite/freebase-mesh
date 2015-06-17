@@ -28,12 +28,11 @@ function Component2(options) {
 
       message.message = "Component2";
      
-      //console.log('this.mesh.exchange');
-      //console.log(this.mesh.exchange);
-
       this.mesh.exchange.component1.exposedMethod(message, function(e, response){
-        //console.log('ran exposed method');
+        
       });
+
+      callback(null, message);
 
     }catch(e){
       callback(e);

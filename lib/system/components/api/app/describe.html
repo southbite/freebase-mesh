@@ -35,7 +35,7 @@
 		        <span><input ng-model="dbsecret" type="password" class="form-control" placeholder="Secret" required /><i style="cursor:pointer" class="glyphicon glyphicon-ok" ng-click="authenticate()"></i></span>
 		      </form>
 	 	</div>
-		<div ng-show="authenticated" style="margin:5px;overflow:auto;height:80%"><div class="jsonView" defocus><json child="selectedData" type="object" defaultCollapsed=true ></json></div></div>
+		<div ng-show="authenticated" style="margin:5px;overflow:auto;height:95%"><div ng-show="api_test_failed" class="alert alert-danger" role="alert">API Test Failed</div><div ng-show="api_tested" class="alert alert-success" role="alert">API Test Ran OK</div><div class="jsonView" defocus><json child="selectedData" type="object" defaultCollapsed=true ></json></div></div>
 	</div>
 	<div id="modalContent" class="modal fade">
 	  <div class="modal-dialog">

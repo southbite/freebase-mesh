@@ -27,8 +27,6 @@ function Component1(options) {
 
       this.module.instance.moduleMethod();
 
-      //console.log("Message from " + message.message);
-      ////console.log(message);
       ////console.log(options);
       message.pingCount++;
       message.message = "Component1";
@@ -37,19 +35,18 @@ function Component1(options) {
      //_this.scope.api.events.component2.exposedMethod(function(e, response)
       if (message.pingCount < options.maximumPings)
       this.mesh.exchange.component2.exposedMethod(message, function(e, response){
-        callback(e);
+       
       });
       else{
         var timeDiff = moment.utc() - message.timestamp;
         var message = 'Hooray, component ping pong test is over!! ' + message.pingCount + ' pings, elapsed time:' + timeDiff + 'ms';
         this.emit('maximum-pings-reached', message, function(e, response){
 
-          ////console.log('emit results');
-          ////console.log(arguments);
-
         });
       }
         
+      callback(null, message);
+
     }catch(e){
       callback(e);
     }

@@ -21,25 +21,13 @@ describe('Using the clientside only', function() {
 
   context('with clientside bits', function() {
 
-
     it('can ride the slippery slip', function(done) {
       
       var freebase = require('freebase');
-      var config = {
-        endpoints: {
-          theFarawayTree: {  // remote mesh node
-            config: {
-              port: 3001,
-              secret: 'mesh',
-              host: 'localhost' // TODO This was necessary, did not default
-            }
-          }
-        }
-      }
+     
+      var MeshClient = require('../lib/system/api');
 
-      var MeshAPI = require('../lib/system/api');
-
-      MeshAPI(config, function(err, client) {
+      MeshClient('localhost', 3001, 'mesh', function(err, client) {
 
         if (err) return done(err);
 

@@ -10,7 +10,8 @@ describe('Bounces a message between two components, demonstrates how the events 
     dataLayer: {
       authTokenSecret: 'a256a2fd43bf441483c5177fc85fd9d3',
       systemSecret: 'mesh',
-      log_level: 'info|error|warning'
+      log_level: 'info|error|warning',
+      //setOptions:{}
     },
     endpoints: {},
     modules: {
@@ -74,7 +75,6 @@ describe('Bounces a message between two components, demonstrates how the events 
 
         mesh.api.event.component1.on('maximum-pings-reached', function(message){
 
-          console.log(message);
           //console.log(mesh.api.event.component1.off.toString());
           mesh.api.event.component1.off(onEventRef, function(err){
             if (err)
