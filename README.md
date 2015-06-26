@@ -1,3 +1,6 @@
+
+__This module has been moved to a temporarily private location__
+
 freebase-mesh:
 ==========
 *The mesh application framework wraps a local freebase instance, and connects to other Meshes by configuration, Freebase and therefore websockets is the transport layer from Mesh to Mesh, methods on components shared by remote meshes can be accesses as if they were local. Modules can be consumed by the mesh and shared as components by configuration.*
